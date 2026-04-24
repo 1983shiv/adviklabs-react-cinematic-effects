@@ -276,7 +276,7 @@ See [CONTRIBUTING.md](./CONTRIBUTING.md) for the step-by-step guide.
 
 ## License
 
-MIT © [Shiv Srivastava](https://github.com/shiv-Srivastava) — see [LICENSE.txt](./LICENSE.txt) for details.
+MIT © [Shiv Srivastava](https://github.com/1983shiv) — see [LICENSE.txt](./LICENSE.txt) for details.
 
 ---
 
