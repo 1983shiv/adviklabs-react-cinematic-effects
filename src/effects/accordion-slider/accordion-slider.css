@@ -1,0 +1,243 @@
+/* ─────────────────────────────────────────────────
+   AccordionSlider — Global CSS
+   Namespace: rce-as  (react-cinematic-effects / accordion-slider)
+   ───────────────────────────────────────────────── */
+
+/* ── Container ─────────────────────────────────── */
+
+.rce-as-accordion {
+  display: flex;
+  gap: var(--rce-as-gap, 8px);
+  height: var(--rce-as-height, 70vh);
+  min-height: var(--rce-as-min-height, 400px);
+  max-height: var(--rce-as-max-height, 600px);
+  width: 100%;
+}
+
+.rce-as-vertical {
+  flex-direction: column;
+  height: auto;
+  min-height: auto;
+  max-height: none;
+  gap: var(--rce-as-gap, 6px);
+}
+
+/* ── Panel ─────────────────────────────────────── */
+
+.rce-as-panel {
+  flex: 1;
+  border-radius: var(--rce-as-radius, 16px);
+  overflow: hidden;
+  position: relative;
+  cursor: pointer;
+  transition: flex var(--rce-as-duration, 600ms) var(--rce-as-easing, cubic-bezier(0.16, 1, 0.3, 1));
+  outline: none;
+}
+
+.rce-as-panel:focus-visible {
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.4);
+}
+
+.rce-as-panel-active {
+  flex: var(--rce-as-expanded-flex, 5);
+}
+
+/* ── Vertical panel sizing ─────────────────────── */
+
+.rce-as-vertical .rce-as-panel {
+  flex: none;
+  height: var(--rce-as-collapsed-height, 60px);
+  transition: height var(--rce-as-duration, 500ms) var(--rce-as-easing, cubic-bezier(0.16, 1, 0.3, 1));
+}
+
+.rce-as-vertical .rce-as-panel-active {
+  height: var(--rce-as-expanded-height, 240px);
+}
+
+/* ── Background image layer ────────────────────── */
+
+.rce-as-bg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  transition: transform var(--rce-as-duration, 600ms) var(--rce-as-easing, cubic-bezier(0.16, 1, 0.3, 1));
+}
+
+.rce-as-panel-active .rce-as-bg {
+  transform: scale(1.05);
+}
+
+/* ── Gradient overlay ──────────────────────────── */
+
+.rce-as-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(10, 10, 11, 0.85) 0%,
+    rgba(10, 10, 11, 0.2) 40%,
+    transparent 60%
+  );
+  transition: opacity 0.3s;
+}
+
+.rce-as-vertical .rce-as-overlay {
+  background: linear-gradient(
+    to right,
+    rgba(10, 10, 11, 0.8) 0%,
+    rgba(10, 10, 11, 0.3) 50%,
+    transparent 80%
+  );
+}
+
+/* ── Collapsed label (horizontal: vertical text) ── */
+
+.rce-as-collapsed-label {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #eae7e2;
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  position: absolute;
+  bottom: 28px;
+  left: 16px;
+  z-index: 2;
+  transition: opacity 0.3s;
+}
+
+.rce-as-panel-active .rce-as-collapsed-label {
+  opacity: 0;
+}
+
+/* Vertical collapsed label */
+.rce-as-vertical .rce-as-collapsed-label {
+  writing-mode: horizontal-tb;
+  position: absolute;
+  top: 50%;
+  left: 24px;
+  bottom: auto;
+  transform: translateY(-50%);
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+}
+
+/* ── Expanded content ──────────────────────────── */
+
+.rce-as-content {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 28px 24px;
+  z-index: 2;
+}
+
+.rce-as-vertical .rce-as-content {
+  bottom: 24px;
+  left: 24px;
+  right: auto;
+}
+
+.rce-as-number {
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #e85d3a;
+  margin-bottom: 8px;
+  font-weight: 400;
+  opacity: 0;
+  transform: translateY(8px);
+  transition:
+    opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1) 0.1s,
+    transform 0.4s cubic-bezier(0.16, 1, 0.3, 1) 0.1s;
+}
+
+.rce-as-title {
+  font-size: 24px;
+  font-weight: 600;
+  letter-spacing: -0.015em;
+  color: #eae7e2;
+  margin-bottom: 6px;
+  opacity: 0;
+  transform: translateY(10px);
+  transition:
+    opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1) 0.15s,
+    transform 0.4s cubic-bezier(0.16, 1, 0.3, 1) 0.15s;
+}
+
+.rce-as-vertical .rce-as-title {
+  font-size: 22px;
+}
+
+.rce-as-description {
+  font-size: 14px;
+  color: rgba(234, 231, 226, 0.7);
+  line-height: 1.5;
+  max-width: 30ch;
+  opacity: 0;
+  transform: translateY(10px);
+  transition:
+    opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1) 0.2s,
+    transform 0.4s cubic-bezier(0.16, 1, 0.3, 1) 0.2s;
+}
+
+.rce-as-vertical .rce-as-description {
+  font-size: 13px;
+  max-width: 40ch;
+}
+
+/* ── Active state — reveal expanded content ────── */
+
+.rce-as-panel-active .rce-as-number,
+.rce-as-panel-active .rce-as-title,
+.rce-as-panel-active .rce-as-description {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ── Reduced motion ────────────────────────────── */
+
+@media (prefers-reduced-motion: reduce) {
+  .rce-as-panel,
+  .rce-as-bg,
+  .rce-as-number,
+  .rce-as-title,
+  .rce-as-description,
+  .rce-as-collapsed-label {
+    transition-duration: 0ms !important;
+  }
+}
+
+/* ── Responsive: horizontal → stacked on mobile ── */
+
+@media (max-width: 768px) {
+  .rce-as-accordion:not(.rce-as-vertical) {
+    flex-direction: column;
+    height: auto;
+    min-height: auto;
+    max-height: none;
+  }
+
+  .rce-as-accordion:not(.rce-as-vertical) .rce-as-panel {
+    height: 60px;
+    flex: none !important;
+  }
+
+  .rce-as-accordion:not(.rce-as-vertical) .rce-as-panel-active {
+    height: 280px;
+    flex: none !important;
+  }
+
+  .rce-as-accordion:not(.rce-as-vertical) .rce-as-collapsed-label {
+    writing-mode: horizontal-tb;
+    position: relative;
+    bottom: auto;
+    left: auto;
+    padding: 18px 20px;
+  }
+}

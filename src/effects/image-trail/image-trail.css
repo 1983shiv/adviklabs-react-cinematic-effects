@@ -1,0 +1,35 @@
+/* ─────────────────────────────────────────────────
+   ImageTrail — Global CSS
+   Namespace: rce-it  (react-cinematic-effects / image-trail)
+   ───────────────────────────────────────────────── */
+
+.rce-it-container {
+  position: relative;
+  overflow: hidden;
+}
+
+.rce-it-hide-cursor {
+  cursor: none;
+}
+
+.rce-it-trail-item {
+  position: fixed;
+  pointer-events: none;
+  z-index: 1;
+  will-change: transform, opacity;
+  opacity: 0;
+  width: var(--rce-it-width, 160px);
+  height: var(--rce-it-height, 200px);
+  border-radius: var(--rce-it-radius, 10px);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* ── Reduced motion ────────────────────────────── */
+
+@media (prefers-reduced-motion: reduce) {
+  .rce-it-trail-item {
+    display: none !important;
+  }
+}

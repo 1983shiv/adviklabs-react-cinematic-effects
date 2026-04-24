@@ -1,0 +1,65 @@
+{/* Introduction page - Storybook auto-registers this via the stories glob */}
+
+
+# ✨ react-cinematic-effects
+
+**Drop-in, extensible cinematic UI effects for React.**
+
+This Storybook is the interactive playground and living documentation for every
+effect in the library. Use it to:
+
+- **Explore** each effect visually before adding it to your project
+- **Tweak** every prop in real-time via the **Controls** panel
+- **Check** accessibility in the **A11y** tab
+- **Read** generated API docs in the **Docs** view
+
+---
+
+## Available Effects
+
+| Effect | Description |
+|---|---|
+| **AccordionSlider** | Horizontal / vertical image panels that expand on hover or click |
+| **ImageTrail** | Cursor-following image tiles that spawn and fade as you move |
+| **StickyStack** | Scroll-driven feature showcase with a sticky paired visual |
+
+---
+
+## Quick Start
+
+```bash
+npm install react-cinematic-effects
+```
+
+```tsx
+import { AccordionSlider } from 'react-cinematic-effects';
+// optional: import global CSS tokens
+import 'react-cinematic-effects/styles.css';
+
+export default function Hero() {
+  return (
+    <AccordionSlider
+      items={[
+        { id: '1', backgroundSrc: '/img/a.jpg', title: 'Strategy' },
+        { id: '2', backgroundSrc: '/img/b.jpg', title: 'Design' },
+        { id: '3', backgroundSrc: '/img/c.jpg', title: 'Deliver' },
+      ]}
+    />
+  );
+}
+```
+
+---
+
+## Philosophy
+
+- **Zero mandatory dependencies** — no GSAP, no Framer Motion, no heavy runtime
+- **SSR-safe** — every component renders a valid HTML fallback on the server
+- **Tree-shakeable** — import only the effect you ship
+- **Fully accessible** — ARIA roles, keyboard support, and `prefers-reduced-motion` built in
+- **CSS-customisable** — every visual variable is a CSS custom property
+
+---
+
+> Navigate the sidebar to explore each effect, or open the **Docs** tab on any
+> story for the full prop reference.

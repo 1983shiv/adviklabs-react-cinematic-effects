@@ -1,0 +1,117 @@
+{
+  "name": "@adviklabs/react-cinematic-effects",
+  "version": "0.1.0",
+  "description": "Drop-in, extensible cinematic UI effect components for React — accordion sliders, image trails, and more.",
+  "type": "module",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      },
+      "require": {
+        "types": "./dist/index.d.cts",
+        "default": "./dist/index.cjs"
+      }
+    },
+    "./effects/accordion-slider": {
+      "import": {
+        "types": "./dist/effects/accordion-slider.d.ts",
+        "default": "./dist/effects/accordion-slider.js"
+      },
+      "require": {
+        "types": "./dist/effects/accordion-slider.d.cts",
+        "default": "./dist/effects/accordion-slider.cjs"
+      }
+    },
+    "./effects/image-trail": {
+      "import": {
+        "types": "./dist/effects/image-trail.d.ts",
+        "default": "./dist/effects/image-trail.js"
+      },
+      "require": {
+        "types": "./dist/effects/image-trail.d.cts",
+        "default": "./dist/effects/image-trail.cjs"
+      }
+    },
+    "./effects/sticky-stack": {
+      "import": {
+        "types": "./dist/effects/sticky-stack.d.ts",
+        "default": "./dist/effects/sticky-stack.js"
+      },
+      "require": {
+        "types": "./dist/effects/sticky-stack.d.cts",
+        "default": "./dist/effects/sticky-stack.cjs"
+      }
+    },
+    "./styles.css": "./dist/index.css"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE.txt"
+  ],
+  "sideEffects": [
+    "*.css"
+  ],
+  "keywords": [
+    "react",
+    "animation",
+    "accordion",
+    "slider",
+    "image-trail",
+    "cursor",
+    "hover",
+    "cinematic",
+    "effects",
+    "components",
+    "ui",
+    "adviklabs"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/1983shiv/adviklabs-react-cinematic-effects.git"
+  },
+  "homepage": "https://github.com/1983shiv/adviklabs-react-cinematic-effects#readme",
+  "bugs": {
+    "url": "https://github.com/1983shiv/adviklabs-react-cinematic-effects/issues"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "author": "Shiv Srivastava <[EMAIL_ADDRESS]> (https://github.com/1983shiv)",
+  "license": "MIT",
+  "peerDependencies": {
+    "react": ">=18.0.0",
+    "react-dom": ">=18.0.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.3.0",
+    "@types/react-dom": "^18.3.0",
+    "react": "^18.3.0",
+    "react-dom": "^18.3.0",
+    "tsup": "^8.0.0",
+    "typescript": "^5.4.0",
+    "storybook": "^10.3.5",
+    "@storybook/react-vite": "^10.3.5",
+    "@chromatic-com/storybook": "^5.1.2",
+    "@storybook/addon-vitest": "^10.3.5",
+    "@storybook/addon-a11y": "^10.3.5",
+    "@storybook/addon-docs": "^10.3.5",
+    "@storybook/addon-onboarding": "^10.3.5",
+    "vitest": "^4.1.5",
+    "playwright": "^1.59.1",
+    "@vitest/browser-playwright": "^4.1.5",
+    "@vitest/coverage-v8": "^4.1.5"
+  },
+  "scripts": {
+    "dev": "tsup --watch",
+    "build": "tsup",
+    "prepublishOnly": "npm run build",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build"
+  }
+}

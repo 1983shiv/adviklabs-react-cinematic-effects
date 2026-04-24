@@ -1,0 +1,16 @@
+/* ─────────────────────────────────────────────────
+   react-cinematic-effects — Optional Global Styles
+   Import: 'react-cinematic-effects/styles.css'
+   ─────────────────────────────────────────────────
+   These are minimal resets and shared custom properties.
+   You do NOT need to import this if your app already
+   has a CSS reset. Each effect ships its own scoped CSS.
+   ───────────────────────────────────────────────── */
+
+:root {
+  --rce-font-family: 'Outfit', system-ui, -apple-system, sans-serif;
+  --rce-bg: #0a0a0b;
+  --rce-text: #eae7e2;
+  --rce-muted: #5a5a5e;
+  --rce-accent: #e85d3a;
+}

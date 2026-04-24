@@ -1,0 +1,171 @@
+/* ─────────────────────────────────────────────────
+   StickyStack — Global CSS
+   Namespace: rce-ss  (react-cinematic-effects / sticky-stack)
+   ───────────────────────────────────────────────── */
+
+/* ── Root container ─────────────────────────────── */
+
+.rce-ss-root {
+  width: 100%;
+}
+
+/* ── Two-column grid ────────────────────────────── */
+
+.rce-ss-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: start;
+}
+
+.rce-ss-grid.rce-ss-visual-right {
+  direction: rtl;
+}
+
+.rce-ss-grid.rce-ss-visual-right > * {
+  direction: ltr;
+}
+
+/* ── Sticky visual column ───────────────────────── */
+
+.rce-ss-visual-col {
+  position: sticky;
+  top: var(--rce-ss-sticky-top, 100px);
+  height: fit-content;
+}
+
+.rce-ss-visual-panel {
+  position: relative;
+  min-height: var(--rce-ss-visual-min-height, 340px);
+  width: 100%;
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+/* Individual visual states — stacked, crossfade */
+
+.rce-ss-visual-state {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity var(--rce-ss-duration, 400ms) ease;
+  pointer-events: none;
+}
+
+.rce-ss-visual-state.rce-ss-visual-active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* ── Feature cards column ───────────────────────── */
+
+.rce-ss-cards-col {
+  display: flex;
+  flex-direction: column;
+  gap: var(--rce-ss-card-gap, 40px);
+  padding: 40px 0;
+}
+
+/* ── Individual feature card ────────────────────── */
+
+.rce-ss-card {
+  padding: var(--rce-ss-card-padding, 40px 32px);
+  border-radius: 16px;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  background: #ffffff;
+  opacity: var(--rce-ss-inactive-opacity, 0.35);
+  transform: translateY(8px);
+  transition:
+    opacity var(--rce-ss-duration, 400ms) cubic-bezier(0.16, 1, 0.3, 1),
+    transform var(--rce-ss-duration, 400ms) cubic-bezier(0.16, 1, 0.3, 1),
+    border-color var(--rce-ss-duration, 400ms) ease,
+    box-shadow var(--rce-ss-duration, 400ms) ease;
+  cursor: default;
+}
+
+.rce-ss-card:focus-visible {
+  outline: 2px solid var(--rce-ss-accent, #4f46e5);
+  outline-offset: 2px;
+}
+
+.rce-ss-card.rce-ss-card-active {
+  opacity: 1;
+  transform: translateY(0);
+  border-color: var(--rce-ss-accent, #4f46e5);
+  box-shadow:
+    0 0 0 1px var(--rce-ss-accent, #4f46e5),
+    0 12px 40px rgba(79, 70, 229, 0.08);
+}
+
+/* ── Card internals ─────────────────────────────── */
+
+.rce-ss-card-number {
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--rce-ss-accent, #4f46e5);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+.rce-ss-card-title {
+  font-size: 22px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  margin-bottom: 10px;
+  color: inherit;
+}
+
+.rce-ss-card-description {
+  font-size: 15px;
+  line-height: 1.6;
+  color: rgba(0, 0, 0, 0.5);
+}
+
+/* ── Dark mode support ──────────────────────────── */
+
+@media (prefers-color-scheme: dark) {
+  .rce-ss-card {
+    background: #1a1a1f;
+    border-color: rgba(255, 255, 255, 0.08);
+  }
+
+  .rce-ss-card-description {
+    color: rgba(255, 255, 255, 0.45);
+  }
+}
+
+/* ── Reduced motion ─────────────────────────────── */
+
+@media (prefers-reduced-motion: reduce) {
+  .rce-ss-card,
+  .rce-ss-visual-state {
+    transition-duration: 0ms !important;
+  }
+}
+
+/* ── Responsive ─────────────────────────────────── */
+
+@media (max-width: 768px) {
+  .rce-ss-grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .rce-ss-grid.rce-ss-visual-right {
+    direction: ltr;
+  }
+
+  .rce-ss-visual-col {
+    position: relative;
+    top: 0;
+  }
+
+  .rce-ss-card {
+    opacity: 1;
+    transform: none;
+  }
+}
