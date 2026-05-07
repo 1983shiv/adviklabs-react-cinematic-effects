@@ -1,6 +1,6 @@
 {
   "name": "@adviklabs/react-cinematic-effects",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "description": "Drop-in, extensible cinematic UI effect components for React — accordion sliders, image trails, and more.",
   "type": "module",
   "main": "./dist/index.cjs",
