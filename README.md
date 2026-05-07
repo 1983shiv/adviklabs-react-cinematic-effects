@@ -6,11 +6,13 @@
 [![bundle size](https://img.shields.io/bundlephobia/minzip/@adviklabs/react-cinematic-effects)](https://bundlephobia.com/package/@adviklabs/react-cinematic-effects)
 [![license](https://img.shields.io/npm/l/@adviklabs/react-cinematic-effects)](./LICENSE.txt)
 
+
 ## Features
 
 - 🎬 **AccordionSlider** — Narrow image panels that expand on hover/click (horizontal + vertical)
 - ✨ **ImageTrail** — Cursor leaves a trail of images/colours that fade out
 - 📌 **StickyStack** — Scroll-driven two-column feature section with a crossfading sticky visual panel
+- 🃏 **FlipCards** — Responsive 3D cards that flip to reveal more info on hover or click
 - 🧩 **Extensible** — Add new effects by dropping a folder — no core changes needed
 - 📦 **Tree-shakable** — Import only the effects you use
 - 🎯 **TypeScript** — Full type definitions with IDE autocomplete
@@ -140,6 +142,63 @@ export default function Hero() {
 </ImageTrail>
 ```
 
+
+### FlipCards
+
+Responsive 3D cards that flip to reveal more info on hover or click. Great for feature highlights, team bios, or service overviews.
+
+```tsx
+import '@adviklabs/react-cinematic-effects/styles.css'; // required — add once at app entry
+import { FlipCards } from '@adviklabs/react-cinematic-effects';
+
+const items = [
+  {
+    id: '1',
+    icon: '🩺',
+    title: 'Diagnosis',
+    subtitle: 'Accurate patient assessment',
+    description: 'Utilizing advanced imaging and lab tests, our team ensures every diagnosis is precise and timely for optimal care.',
+    linkLabel: 'Learn more',
+  },
+  {
+    id: '2',
+    icon: '💊',
+    title: 'Treatment',
+    subtitle: 'Personalized therapies',
+    description: 'From medication management to surgical procedures, we tailor treatments to each patient’s unique needs and conditions.',
+    linkLabel: 'Learn more',
+  },
+  {
+    id: '3',
+    icon: '🤝',
+    title: 'Patient Support',
+    subtitle: 'Continuous care',
+    description: 'Our support staff guides patients through recovery, offering education, counseling, and follow-up for lasting health.',
+    linkLabel: 'Learn more',
+  },
+  {
+    id: '4',
+    icon: '🔬',
+    title: 'Research',
+    subtitle: 'Innovative solutions',
+    description: 'We invest in medical research and clinical trials to bring the latest advancements and therapies to our patients.',
+    linkLabel: 'Learn more',
+  },
+];
+
+export default function HealthcareHighlights() {
+  return (
+    <FlipCards
+      items={items}
+      trigger="hover"
+      cardHeight="320px"
+      gap={20}
+      borderRadius={20}
+    />
+  );
+}
+```
+
 ### StickyStack
 
 The "sticky product + scrolling benefits" pattern made popular by Stripe, Linear, and Apple. A sticky visual panel on one side crossfades as the user scrolls through feature cards on the other side.
@@ -154,21 +213,21 @@ const features = [
     number: '01',
     title: 'Real-time monitoring',
     description: 'Track uptime, latency, and error rates across all your services.',
-    visual: <img src="/feature-monitoring.png" alt="Monitoring dashboard" />,
+    visual: <img src="/feature-monitoring.png" alt="Monitoring dashboard" />, 
   },
   {
     id: '2',
     number: '02',
     title: 'Instant alerts',
     description: 'Get notified the moment something goes wrong — via Slack, email, or PagerDuty.',
-    visual: <img src="/feature-alerts.png" alt="Alert configuration" />,
+    visual: <img src="/feature-alerts.png" alt="Alert configuration" />, 
   },
   {
     id: '3',
     number: '03',
     title: 'Detailed analytics',
     description: 'Drill into historical data, P99 latency, and custom dashboards.',
-    visual: <img src="/feature-analytics.png" alt="Analytics chart" />,
+    visual: <img src="/feature-analytics.png" alt="Analytics chart" />, 
   },
 ];
 

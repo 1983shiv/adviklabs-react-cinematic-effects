@@ -1,0 +1,124 @@
+/* ─────────────────────────────────────────────────
+   FlipCards — CSS Module
+   Prefix: rce-fc (react-cinematic-effects / flip-cards)
+   ───────────────────────────────────────────────── */
+
+/* ── Grid ──────────────────────────────────────── */
+
+.grid {
+  display: grid;
+  grid-template-columns: var(--rce-fc-columns, repeat(auto-fit, minmax(260px, 1fr)));
+  gap: var(--rce-fc-gap, 20px);
+  width: 100%;
+}
+
+/* ── Card wrapper ──────────────────────────────── */
+
+.card {
+  perspective: var(--rce-fc-perspective, 800px);
+  height: var(--rce-fc-height, 320px);
+}
+
+/* ── Inner (the flipping container) ───────────── */
+
+.inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform var(--rce-fc-duration, 600ms) var(--rce-fc-easing, cubic-bezier(0.16, 1, 0.3, 1));
+}
+
+/* Hover trigger (CSS-only) */
+.card.hoverEnabled:hover .inner {
+  transform: rotateY(180deg);
+}
+
+/* Click trigger (state-controlled via .flipped class) */
+.card.flipped .inner {
+  transform: rotateY(180deg);
+}
+
+/* ── Shared face styles ────────────────────────── */
+
+.front,
+.back {
+  position: absolute;
+  inset: 0;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  border-radius: var(--rce-fc-radius, 20px);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 32px;
+  overflow: hidden;
+}
+
+/* ── Front face ────────────────────────────────── */
+
+.front {
+  background: #ffffff;
+  border: 1px solid #e0ddd8;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.04);
+}
+
+/* ── Back face ─────────────────────────────────── */
+
+.back {
+  background: var(--rce-fc-back-bg, #4f46e5);
+  color: white;
+  transform: rotateY(180deg);
+}
+
+/* ── Front content ─────────────────────────────── */
+
+.icon {
+  font-size: 32px;
+  margin-bottom: auto;
+  padding-top: 8px;
+}
+
+.frontTitle {
+  font-size: 20px;
+  font-weight: 600;
+  margin: 0 0 4px;
+}
+
+.frontSubtitle {
+  font-size: 13px;
+  color: var(--rce-fc-muted, #6b6b73);
+  margin: 0;
+}
+
+/* ── Back content ──────────────────────────────── */
+
+.backTitle {
+  font-size: 20px;
+  font-weight: 600;
+  margin: 0 0 8px;
+}
+
+.backDescription {
+  font-size: 14px;
+  opacity: 0.85;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.backLink {
+  display: inline-block;
+  margin-top: 16px;
+  font-size: 13px;
+  opacity: 0.7;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+/* ── Keyboard accessibility ────────────────────── */
+
+.card[tabindex='0']:focus-visible .inner {
+  outline: 3px solid rgba(79, 70, 229, 0.6);
+  outline-offset: 3px;
+  border-radius: var(--rce-fc-radius, 20px);
+}

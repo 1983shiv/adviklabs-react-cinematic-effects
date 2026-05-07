@@ -47,6 +47,16 @@
         "default": "./dist/effects/sticky-stack.cjs"
       }
     },
+    "./effects/flip-cards": {
+      "import": {
+        "types": "./dist/effects/flip-cards.d.ts",
+        "default": "./dist/effects/flip-cards.js"
+      },
+      "require": {
+        "types": "./dist/effects/flip-cards.d.cts",
+        "default": "./dist/effects/flip-cards.cjs"
+      }
+    },
     "./styles.css": "./dist/index.css"
   },
   "files": [
@@ -95,13 +105,13 @@
     "react-dom": "^18.3.0",
     "tsup": "^8.0.0",
     "typescript": "^5.4.0",
-    "storybook": "^10.3.5",
-    "@storybook/react-vite": "^10.3.5",
+    "storybook": "^10.3.6",
+    "@storybook/react-vite": "^10.3.6",
     "@chromatic-com/storybook": "^5.1.2",
-    "@storybook/addon-vitest": "^10.3.5",
-    "@storybook/addon-a11y": "^10.3.5",
-    "@storybook/addon-docs": "^10.3.5",
-    "@storybook/addon-onboarding": "^10.3.5",
+    "@storybook/addon-vitest": "^10.3.6",
+    "@storybook/addon-a11y": "^10.3.6",
+    "@storybook/addon-docs": "^10.3.6",
+    "@storybook/addon-onboarding": "^10.3.6",
     "vitest": "^4.1.5",
     "playwright": "^1.59.1",
     "@vitest/browser-playwright": "^4.1.5",

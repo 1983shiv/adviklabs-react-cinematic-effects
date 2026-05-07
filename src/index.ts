@@ -22,6 +22,9 @@ export type {
   StickyStackItem,
 } from './effects/sticky-stack';
 
+export { FlipCards } from './effects/flip-cards';
+export type { FlipCardsProps, FlipCardItem } from './effects/flip-cards';
+
 // ── Core (advanced users / contributors) ─────────
 export { useReducedMotion } from './core/hooks/useReducedMotion';
 export { useIsClient } from './core/hooks/useIsClient';
