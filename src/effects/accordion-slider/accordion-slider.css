@@ -178,7 +178,6 @@
   font-size: 14px;
   color: rgba(234, 231, 226, 0.7);
   line-height: 1.5;
-  max-width: 30ch;
   opacity: 0;
   transform: translateY(10px);
   transition:

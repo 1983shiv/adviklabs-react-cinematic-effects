@@ -24,11 +24,28 @@
 npm install @adviklabs/react-cinematic-effects
 ```
 
+### Required: Import the stylesheet
+
+The package ships its styles as a separate CSS file. Add this import **once** in your app's entry point (e.g. `app/layout.tsx` for Next.js, `main.tsx` for Vite):
+
+```ts
+import '@adviklabs/react-cinematic-effects/styles.css';
+```
+
+> **Next.js note:** Because the CSS comes from `node_modules`, Next.js requires you to mark the package as transpilable. Add the following to your `next.config.ts`:
+>
+> ```ts
+> const nextConfig = {
+>   transpilePackages: ['@adviklabs/react-cinematic-effects'],
+> };
+> ```
+
 ## Quick Start
 
 ### AccordionSlider
 
 ```tsx
+import '@adviklabs/react-cinematic-effects/styles.css'; // required — add once at app entry
 import { AccordionSlider } from '@adviklabs/react-cinematic-effects';
 
 const items = [
@@ -88,6 +105,7 @@ export default function Portfolio() {
 ### ImageTrail
 
 ```tsx
+import '@adviklabs/react-cinematic-effects/styles.css'; // required — add once at app entry
 import { ImageTrail } from '@adviklabs/react-cinematic-effects';
 
 export default function Hero() {
@@ -127,6 +145,7 @@ export default function Hero() {
 The "sticky product + scrolling benefits" pattern made popular by Stripe, Linear, and Apple. A sticky visual panel on one side crossfades as the user scrolls through feature cards on the other side.
 
 ```tsx
+import '@adviklabs/react-cinematic-effects/styles.css'; // required — add once at app entry
 import { StickyStack } from '@adviklabs/react-cinematic-effects';
 
 const features = [
