@@ -25,6 +25,13 @@ export type {
 export { FlipCards } from './effects/flip-cards';
 export type { FlipCardsProps, FlipCardItem } from './effects/flip-cards';
 
+export { CircularText } from './effects/circular-text';
+export type {
+  CircularTextProps,
+  CircularTextMode,
+  SpinDirection,
+} from './effects/circular-text';
+
 // ── Core (advanced users / contributors) ─────────
 export { useReducedMotion } from './core/hooks/useReducedMotion';
 export { useIsClient } from './core/hooks/useIsClient';

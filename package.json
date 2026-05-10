@@ -57,6 +57,16 @@
         "default": "./dist/effects/flip-cards.cjs"
       }
     },
+    "./effects/circular-text": {
+      "import": {
+        "types": "./dist/effects/circular-text.d.ts",
+        "default": "./dist/effects/circular-text.js"
+      },
+      "require": {
+        "types": "./dist/effects/circular-text.d.cts",
+        "default": "./dist/effects/circular-text.cjs"
+      }
+    },
     "./styles.css": "./dist/index.css"
   },
   "files": [
