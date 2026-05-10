@@ -13,6 +13,8 @@
 - ✨ **ImageTrail** — Cursor leaves a trail of images/colours that fade out
 - 📌 **StickyStack** — Scroll-driven two-column feature section with a crossfading sticky visual panel
 - 🃏 **FlipCards** — Responsive 3D cards that flip to reveal more info on hover or click
+- 🔵 **CircularText** — Text rendered along a rotating SVG arc; spin, scroll-reactive, or static modes
+- 🎨 **ColorShift** — Scroll-driven background and text colour transitions between page sections
 - 🧩 **Extensible** — Add new effects by dropping a folder — no core changes needed
 - 📦 **Tree-shakable** — Import only the effects you use
 - 🎯 **TypeScript** — Full type definitions with IDE autocomplete
@@ -256,7 +258,114 @@ export default function Features() {
 />
 ```
 
-## Props
+### CircularText
+
+Text rendered along a rotating SVG arc. Works as badges, logo treatments, and section accents. Three modes: continuous CSS spin, scroll-reactive rotation, or static.
+
+```tsx
+import '@adviklabs/react-cinematic-effects/styles.css'; // required — add once at app entry
+import { CircularText } from '@adviklabs/react-cinematic-effects';
+
+export default function Badge() {
+  return (
+    <CircularText
+      text="DESIGN \u2022 BUILD \u2022 SHIP \u2022 SCALE \u2022 "
+      repeat={2}
+      size={320}
+      radius={120}
+      spinDuration={20}
+      mode="spin"
+    >
+      <div style={{ textAlign: 'center' }}>
+        <div style={{ fontSize: 32, fontWeight: 600 }}>2026</div>
+        <div style={{ fontSize: 13, opacity: 0.5 }}>Est.</div>
+      </div>
+    </CircularText>
+  );
+}
+```
+
+#### Scroll-reactive variant
+
+```tsx
+<CircularText
+  text="SCROLL REACTIVE \u2022 SCROLL REACTIVE \u2022 "
+  size={240}
+  radius={90}
+  mode="scroll"
+  scrollSensitivity={0.5}
+  textColor="#a8748e"
+>
+  <span style={{ fontSize: 28 }}>&#8595;</span>
+</CircularText>
+```
+
+#### Reverse spin
+
+```tsx
+<CircularText
+  text="FREE CONSULTATION \u2022 FREE CONSULTATION \u2022 "
+  size={240}
+  radius={90}
+  spinDuration={12}
+  spinDirection="reverse"
+  textColor="#e85d3a"
+/>
+```
+
+### ColorShift
+
+Scroll-driven background and text colour transitions. As each section enters the active viewport zone the container smoothly transitions to that section's colour palette. Uses `IntersectionObserver` — zero dependencies.
+
+```tsx
+import '@adviklabs/react-cinematic-effects/styles.css'; // required — add once at app entry
+import { ColorShift } from '@adviklabs/react-cinematic-effects';
+
+export default function Page() {
+  return (
+    <ColorShift
+      sections={[
+        {
+          bg: '#0a0a0b',
+          text: '#eae7e2',
+          children: <HeroSection />,
+        },
+        {
+          bg: '#1a0d08',
+          text: '#f0e8df',
+          children: <WarmSection />,
+        },
+        {
+          bg: '#081a12',
+          text: '#dff0e8',
+          children: <ForestSection />,
+        },
+        {
+          bg: '#0d081a',
+          text: '#e0dff0',
+          children: <NightSection />,
+        },
+      ]}
+      transitionDuration={800}
+      triggerOffset={0.4}
+    />
+  );
+}
+```
+
+#### Dark-to-light flip mid-page
+
+```tsx
+<ColorShift
+  sections={[
+    { bg: '#0a0a0b', text: '#eae7e2', children: <StorySection /> },
+    { bg: '#f5f3ef', text: '#1a1a1f', children: <ActionSection /> },
+    { bg: '#0a0a0b', text: '#eae7e2', children: <ClosingSection /> },
+  ]}
+  transitionDuration={600}
+  transitionEasing="ease-in-out"
+/>
+```
 
 ### `<AccordionSlider />`
 
@@ -320,7 +429,41 @@ export default function Features() {
 | `visual` | `ReactNode` | Content shown in the sticky panel (image, chart, illustration…) |
 | `number` | `string?` | Optional label shown above the title (e.g. `"01"`) |
 
-## Theming with CSS Custom Properties
+### `<CircularText />`
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `text` | `string` | *required* | Text rendered along the circular arc |
+| `repeat` | `number` | `1` | Number of times to repeat the text string around the arc |
+| `radius` | `number` | `120` | Arc radius in SVG units (viewBox is 300×300, max 145) |
+| `size` | `number` | `320` | Rendered width and height of the component in px |
+| `fontSize` | `number` | `14` | Font size in SVG units |
+| `letterSpacing` | `string` | `'0.3em'` | CSS letter-spacing on the arc text |
+| `textColor` | `string` | `'currentColor'` | Text fill colour |
+| `fontWeight` | `number \| string` | `500` | Font weight of the arc text |
+| `spinDuration` | `number` | `20` | Duration of one full rotation in seconds (spin mode only) |
+| `spinDirection` | `'normal' \| 'reverse'` | `'normal'` | Clockwise or counter-clockwise rotation |
+| `mode` | `'spin' \| 'scroll' \| 'none'` | `'spin'` | Animation mode |
+| `scrollSensitivity` | `number` | `0.5` | Degrees of rotation per pixel scrolled (scroll mode only) |
+| `children` | `ReactNode` | — | Content rendered at the centre of the circle |
+
+### `<ColorShift />`
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `sections` | `ColorShiftSection[]` | *required* | Ordered list of sections with their colour palettes and content |
+| `transitionDuration` | `number` | `800` | Duration of the background/text colour transition in ms |
+| `transitionEasing` | `string` | `'ease'` | CSS easing function for the colour transition |
+| `triggerOffset` | `number` | `0.4` | Fraction of the viewport (0–0.49) used as dead-band at top and bottom before a section activates |
+| `sectionMinHeight` | `string` | `'100dvh'` | CSS `min-height` applied to every section wrapper |
+
+#### `ColorShiftSection` shape
+
+| Field | Type | Description |
+|---|---|---|
+| `bg` | `string` | Background colour for this section (any valid CSS colour) |
+| `text` | `string` | Foreground / text colour for this section |
+| `children` | `ReactNode` | Section content |
 
 Override any visual property from your own CSS:
 

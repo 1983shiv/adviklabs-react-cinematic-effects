@@ -17,10 +17,12 @@ effect in the library. Use it to:
 
 ## Available Effects
 
-- **AccordionSlider** | Horizontal / vertical image panels that expand on hover or click    
-- **ImageTrail**      | Cursor-following image tiles that spawn and fade as you move        
-- **StickyStack**     | Scroll-driven feature showcase with a sticky paired visual          
-- **FlipCards**       | Responsive 3D cards that flip to reveal more info on hover or click 
+- **AccordionSlider** | Horizontal / vertical image panels that expand on hover or click
+- **ImageTrail**      | Cursor-following image tiles that spawn and fade as you move
+- **StickyStack**     | Scroll-driven feature showcase with a sticky paired visual
+- **FlipCards**       | Responsive 3D cards that flip to reveal more info on hover or click
+- **CircularText**    | Text rendered along a rotating SVG arc — spin, scroll-reactive, or static
+- **ColorShift**      | Scroll-driven background and text colour transitions between page sections
 
 ---
 
@@ -42,6 +44,34 @@ export default function Hero() {
         { id: '1', backgroundSrc: '/img/a.jpg', title: 'Strategy' },
         { id: '2', backgroundSrc: '/img/b.jpg', title: 'Design' },
         { id: '3', backgroundSrc: '/img/c.jpg', title: 'Deliver' },
+      ]}
+    />
+  );
+}
+```
+
+```tsx
+import { CircularText } from 'react-cinematic-effects';
+
+export default function Badge() {
+  return (
+    <CircularText text="DESIGN • BUILD • SHIP • SCALE • " repeat={2} size={280}>
+      <span>2026</span>
+    </CircularText>
+  );
+}
+```
+
+```tsx
+import { ColorShift } from 'react-cinematic-effects';
+
+export default function Page() {
+  return (
+    <ColorShift
+      sections={[
+        { bg: '#0a0a0b', text: '#eae7e2', children: <HeroSection /> },
+        { bg: '#081a12', text: '#dff0e8', children: <ForestSection /> },
+        { bg: '#0d081a', text: '#e0dff0', children: <NightSection /> },
       ]}
     />
   );
