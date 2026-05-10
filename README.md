@@ -106,44 +106,6 @@ export default function Portfolio() {
 />
 ```
 
-### ImageTrail
-
-```tsx
-import '@adviklabs/react-cinematic-effects/styles.css'; // required — add once at app entry
-import { ImageTrail } from '@adviklabs/react-cinematic-effects';
-
-export default function Hero() {
-  return (
-    <ImageTrail
-      images={['/img/a.jpg', '/img/b.jpg', '/img/c.jpg', '/img/d.jpg']}
-      threshold={50}
-      trailWidth={160}
-      trailHeight={200}
-      fadeDuration={900}
-      poolSize={20}
-    >
-      <h1 style={{ fontSize: '8rem', textAlign: 'center' }}>
-        MOVE YOUR MOUSE
-      </h1>
-    </ImageTrail>
-  );
-}
-```
-
-### With colours instead of images
-
-```tsx
-<ImageTrail
-  colors={['#a8748e', '#748ea8', '#8ea874', '#a8a074']}
-  threshold={40}
-  rotationRange={15}
->
-  <div style={{ minHeight: '60vh', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-    <h2>Hover here</h2>
-  </div>
-</ImageTrail>
-```
-
 
 ### FlipCards
 
@@ -366,6 +328,46 @@ export default function Page() {
   transitionEasing="ease-in-out"
 />
 ```
+
+
+### ImageTrail
+
+```tsx
+import '@adviklabs/react-cinematic-effects/styles.css'; // required — add once at app entry
+import { ImageTrail } from '@adviklabs/react-cinematic-effects';
+
+export default function Hero() {
+  return (
+    <ImageTrail
+      images={['/img/a.jpg', '/img/b.jpg', '/img/c.jpg', '/img/d.jpg']}
+      threshold={50}
+      trailWidth={160}
+      trailHeight={200}
+      fadeDuration={900}
+      poolSize={20}
+    >
+      <h1 style={{ fontSize: '8rem', textAlign: 'center' }}>
+        MOVE YOUR MOUSE
+      </h1>
+    </ImageTrail>
+  );
+}
+```
+
+### With colours instead of images
+
+```tsx
+<ImageTrail
+  colors={['#a8748e', '#748ea8', '#8ea874', '#a8a074']}
+  threshold={40}
+  rotationRange={15}
+>
+  <div style={{ minHeight: '60vh', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+    <h2>Hover here</h2>
+  </div>
+</ImageTrail>
+```
+
 
 ### `<AccordionSlider />`
 
