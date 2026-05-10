@@ -8,6 +8,7 @@ export default defineConfig({
     'effects/sticky-stack': 'src/effects/sticky-stack/index.ts',
     'effects/flip-cards': 'src/effects/flip-cards/index.ts',
     'effects/circular-text': 'src/effects/circular-text/index.ts',
+    'effects/color-shift': 'src/effects/color-shift/index.ts',
     core: 'src/core/index.ts',
   },
   format: ['esm', 'cjs'],

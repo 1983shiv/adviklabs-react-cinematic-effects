@@ -67,6 +67,16 @@
         "default": "./dist/effects/circular-text.cjs"
       }
     },
+    "./effects/color-shift": {
+      "import": {
+        "types": "./dist/effects/color-shift.d.ts",
+        "default": "./dist/effects/color-shift.js"
+      },
+      "require": {
+        "types": "./dist/effects/color-shift.d.cts",
+        "default": "./dist/effects/color-shift.cjs"
+      }
+    },
     "./styles.css": "./dist/index.css"
   },
   "files": [

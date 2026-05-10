@@ -1,0 +1,18 @@
+/* Container — holds and transitions the active colour palette */
+.container {
+  background-color: var(--rce-cs-bg, #0a0a0b);
+  color: var(--rce-cs-text, #eae7e2);
+  transition:
+    background-color var(--rce-cs-duration, 0.8s) var(--rce-cs-easing, ease),
+    color var(--rce-cs-duration, 0.8s) var(--rce-cs-easing, ease);
+}
+
+/* Disable transition for users who prefer reduced motion */
+.container--reduced {
+  transition: none;
+}
+
+/* Individual section wrapper */
+.section {
+  min-height: var(--rce-cs-section-min-height, 100dvh);
+}

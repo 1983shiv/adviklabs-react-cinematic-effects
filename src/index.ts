@@ -32,6 +32,9 @@ export type {
   SpinDirection,
 } from './effects/circular-text';
 
+export { ColorShift } from './effects/color-shift';
+export type { ColorShiftProps, ColorShiftSection } from './effects/color-shift';
+
 // ── Core (advanced users / contributors) ─────────
 export { useReducedMotion } from './core/hooks/useReducedMotion';
 export { useIsClient } from './core/hooks/useIsClient';
