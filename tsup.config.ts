@@ -9,6 +9,7 @@ export default defineConfig({
     'effects/flip-cards': 'src/effects/flip-cards/index.ts',
     'effects/circular-text': 'src/effects/circular-text/index.ts',
     'effects/color-shift': 'src/effects/color-shift/index.ts',
+    'effects/type-writer': 'src/effects/type-writer/index.ts',
     core: 'src/core/index.ts',
   },
   format: ['esm', 'cjs'],

@@ -23,6 +23,7 @@ effect in the library. Use it to:
 - **FlipCards**       | Responsive 3D cards that flip to reveal more info on hover or click
 - **CircularText**    | Text rendered along a rotating SVG arc — spin, scroll-reactive, or static
 - **ColorShift**      | Scroll-driven background and text colour transitions between page sections
+- **TypeWriter**      | Phrase cycler, viewport-triggered code block, and staggered chat bubble sequence
 
 ---
 
@@ -58,6 +59,22 @@ export default function Badge() {
     <CircularText text="DESIGN • BUILD • SHIP • SCALE • " repeat={2} size={280}>
       <span>2026</span>
     </CircularText>
+  );
+}
+```
+
+```tsx
+import { TypeWriter } from 'react-cinematic-effects';
+
+export default function Hero() {
+  return (
+    <TypeWriter
+      variant="cycler"
+      phrases={['We craft digital experiences.', 'We define modern brands.', 'We architect future products.']}
+      typeSpeed={60}
+      showCursor
+      cursorColor="#c8a97e"
+    />
   );
 }
 ```

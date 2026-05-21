@@ -1,0 +1,105 @@
+.container {
+  /* No layout opinions — let the consumer control width/height */
+  display: block;
+}
+
+/* ── Cycler variant ──────────────────────────────────────────────────────────── */
+
+.cyclerRoot {
+  display: inline-block;
+  position: relative;
+  /* Min-height prevents layout shift as text grows/shrinks */
+  min-height: var(--rce-tw-line-height, 1.3em);
+  line-height: var(--rce-tw-line-height, 1.3);
+}
+
+.cyclerText {
+  /* Inherits font from the parent element */
+}
+
+.cursor {
+  display: inline-block;
+  width: var(--rce-tw-cursor-width, 3px);
+  height: 1em;
+  background: var(--rce-tw-cursor-color, currentColor);
+  margin-left: 2px;
+  vertical-align: text-bottom;
+  animation: rce-tw-blink var(--rce-tw-blink-speed, 0.6s) step-end infinite;
+}
+
+/* Static cursor for reduced-motion / SSR */
+.cursor--static {
+  animation: none;
+  opacity: 1;
+}
+
+@keyframes rce-tw-blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+/* ── Code variant ────────────────────────────────────────────────────────────── */
+
+.codeRoot {
+  font-family: var(--rce-tw-code-font, 'JetBrains Mono', 'Fira Code', 'Cascadia Code', monospace);
+  font-size: var(--rce-tw-code-size, 1rem);
+  white-space: pre-wrap;
+  word-break: break-all;
+  line-height: var(--rce-tw-code-line-height, 1.7);
+  min-height: var(--rce-tw-code-min-height, 120px);
+}
+
+/* ── Chat variant ────────────────────────────────────────────────────────────── */
+
+.chatRoot {
+  display: flex;
+  flex-direction: column;
+  gap: var(--rce-tw-chat-gap, 12px);
+  width: 100%;
+}
+
+.chatBubble {
+  padding: var(--rce-tw-bubble-padding, 14px 20px);
+  border-radius: var(--rce-tw-bubble-radius, 16px);
+  font-size: var(--rce-tw-bubble-font-size, 15px);
+  line-height: 1.5;
+  max-width: 80%;
+
+  /* Hidden by default; revealed by data-visible attribute */
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.chatBubble[data-visible='true'] {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.chatBubble--user {
+  background: var(--rce-tw-bubble-user-bg, rgba(255, 255, 255, 0.08));
+  align-self: flex-end;
+  border-bottom-right-radius: 4px;
+}
+
+.chatBubble--bot {
+  background: var(--rce-tw-bubble-bot-bg, rgba(255, 255, 255, 0.04));
+  border: 1px solid var(--rce-tw-bubble-bot-border, rgba(255, 255, 255, 0.1));
+  align-self: flex-start;
+  border-bottom-left-radius: 4px;
+}
+
+/* Reduced motion: skip transitions, show immediately */
+@media (prefers-reduced-motion: reduce) {
+  .cursor {
+    animation: none;
+  }
+
+  .chatBubble {
+    transition: none;
+    opacity: 1;
+    transform: none;
+  }
+}

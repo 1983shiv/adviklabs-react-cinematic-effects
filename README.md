@@ -15,6 +15,7 @@
 - 🃏 **FlipCards** — Responsive 3D cards that flip to reveal more info on hover or click
 - 🔵 **CircularText** — Text rendered along a rotating SVG arc; spin, scroll-reactive, or static modes
 - 🎨 **ColorShift** — Scroll-driven background and text colour transitions between page sections
+- ⌨️ **TypeWriter** — Three-variant typewriter effect: phrase cycler, viewport-triggered code block, and staggered chat bubble sequence
 - 🧩 **Extensible** — Add new effects by dropping a folder — no core changes needed
 - 📦 **Tree-shakable** — Import only the effects you use
 - 🎯 **TypeScript** — Full type definitions with IDE autocomplete
@@ -330,6 +331,63 @@ export default function Page() {
 ```
 
 
+### TypeWriter
+
+Three variants in one component — a phrase cycler for hero headings, a viewport-triggered code block typewriter, and a staggered chat bubble sequence.
+
+```tsx
+import '@adviklabs/react-cinematic-effects/styles.css'; // required — add once at app entry
+import { TypeWriter } from '@adviklabs/react-cinematic-effects';
+
+// Phrase cycler
+export default function Hero() {
+  return (
+    <TypeWriter
+      variant="cycler"
+      phrases={[
+        'We craft digital experiences.',
+        'We define modern brands.',
+        'We architect future products.',
+      ]}
+      typeSpeed={60}
+      deleteSpeed={30}
+      pauseFrames={40}
+      betweenPhraseDelay={400}
+      showCursor
+      cursorColor="#c8a97e"
+      cursorWidth={3}
+    />
+  );
+}
+```
+
+#### Code block variant
+
+```tsx
+<TypeWriter
+  variant="code"
+  codeText={`const greet = (name: string) => \`Hello, \${name}!\`;`}
+  codeMinDelay={20}
+  codeMaxDelay={60}
+  codeIntersectionThreshold={0.5}
+/>
+```
+
+#### Chat sequence variant
+
+```tsx
+<TypeWriter
+  variant="chat"
+  messages={[
+    { text: 'How do I add cinematic effects?', role: 'user', delay: 0 },
+    { text: 'Just install react-cinematic-effects!', role: 'bot', delay: 1200 },
+    { text: 'That easy?', role: 'user', delay: 2600 },
+    { text: 'That easy. 🚀', role: 'bot', delay: 3800 },
+  ]}
+  chatInitialOffset={500}
+/>
+```
+
 ### ImageTrail
 
 ```tsx
@@ -368,6 +426,34 @@ export default function Hero() {
 </ImageTrail>
 ```
 
+
+### `<TypeWriter />`
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `variant` | `'cycler' \| 'code' \| 'chat'` | `'cycler'` | Which typewriter variant to render |
+| `phrases` | `string[]` | `['We build websites.', …]` | Phrases to cycle through (cycler variant) |
+| `typeSpeed` | `number` | `60` | Milliseconds per character while typing (cycler & code) |
+| `deleteSpeed` | `number` | `30` | Milliseconds per character while deleting (cycler) |
+| `pauseFrames` | `number` | `40` | Animation frames to pause at phrase end before deleting (cycler) |
+| `betweenPhraseDelay` | `number` | `400` | Ms to wait between delete finish and next phrase (cycler) |
+| `showCursor` | `boolean` | `true` | Show blinking cursor (cycler) |
+| `cursorColor` | `string` | `'currentColor'` | Cursor colour (cycler) |
+| `cursorWidth` | `number` | `3` | Cursor bar width in px (cycler) |
+| `codeText` | `string` | JS snippet | Code string to type character-by-character (code) |
+| `codeMinDelay` | `number` | `20` | Minimum per-character delay in ms (code) |
+| `codeMaxDelay` | `number` | `60` | Maximum per-character delay in ms (code) |
+| `codeIntersectionThreshold` | `number` | `0.5` | Viewport visibility fraction before typing begins (code) |
+| `messages` | `ChatMessage[]` | demo conversation | Chat bubbles to display (chat) |
+| `chatInitialOffset` | `number` | `500` | Extra ms added to every message delay (chat) |
+
+#### `ChatMessage` shape
+
+| Field | Type | Description |
+|---|---|---|
+| `text` | `string` | Message text |
+| `role` | `'user' \| 'bot'` | Controls visual alignment and styling |
+| `delay` | `number?` | Ms before this bubble appears — default `0` |
 
 ### `<AccordionSlider />`
 

@@ -35,6 +35,9 @@ export type {
 export { ColorShift } from './effects/color-shift';
 export type { ColorShiftProps, ColorShiftSection } from './effects/color-shift';
 
+export { TypeWriter } from './effects/type-writer';
+export type { TypeWriterProps, TypeWriterVariant, ChatMessage } from './effects/type-writer';
+
 // ── Core (advanced users / contributors) ─────────
 export { useReducedMotion } from './core/hooks/useReducedMotion';
 export { useIsClient } from './core/hooks/useIsClient';

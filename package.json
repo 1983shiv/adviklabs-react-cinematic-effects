@@ -77,6 +77,16 @@
         "default": "./dist/effects/color-shift.cjs"
       }
     },
+    "./effects/type-writer": {
+      "import": {
+        "types": "./dist/effects/type-writer.d.ts",
+        "default": "./dist/effects/type-writer.js"
+      },
+      "require": {
+        "types": "./dist/effects/type-writer.d.cts",
+        "default": "./dist/effects/type-writer.cjs"
+      }
+    },
     "./styles.css": "./dist/index.css"
   },
   "files": [
@@ -93,6 +103,7 @@
     "accordion",
     "slider",
     "image-trail",
+    "typewriter",
     "cursor",
     "hover",
     "cinematic",
