@@ -7,7 +7,7 @@
 [![license](https://img.shields.io/npm/l/@adviklabs/react-cinematic-effects)](./LICENSE.txt)
 
 
-## Features
+## Features 
 
 - 🎬 **AccordionSlider** — Narrow image panels that expand on hover/click (horizontal + vertical)
 - ✨ **ImageTrail** — Cursor leaves a trail of images/colours that fade out
@@ -16,6 +16,7 @@
 - 🔵 **CircularText** — Text rendered along a rotating SVG arc; spin, scroll-reactive, or static modes
 - 🎨 **ColorShift** — Scroll-driven background and text colour transitions between page sections
 - ⌨️ **TypeWriter** — Three-variant typewriter effect: phrase cycler, viewport-triggered code block, and staggered chat bubble sequence
+- 🗂️ **StickyCardStack** — Cards stack on top of each other as you scroll, creating a physical sense of layers
 - 🧩 **Extensible** — Add new effects by dropping a folder — no core changes needed
 - 📦 **Tree-shakable** — Import only the effects you use
 - 🎯 **TypeScript** — Full type definitions with IDE autocomplete
@@ -568,6 +569,103 @@ Override any visual property from your own CSS:
   --rce-as-expanded-flex: 4;
 }
 ```
+
+### StickyCardStack
+
+Cards stack on top of each other as you scroll — like dealing cards onto a table. Each card pins in place, then the next one slides over it. Older cards gently scale down and fade as new cards cover them. Pure CSS sticky positioning powered — the scroll animation is an enhancement.
+
+```tsx
+import '@adviklabs/react-cinematic-effects/styles.css'; // required — add once at app entry
+import { StickyCardStack } from '@adviklabs/react-cinematic-effects';
+
+const steps = [
+  {
+    id: '1',
+    number: 'Stage 01',
+    title: 'Foundation',
+    description: 'Core skills, mentorship, and building a portfolio of small wins. Curiosity outweighs ego. Every mistake is a lesson in disguise.',
+  },
+  {
+    id: '2',
+    number: 'Stage 02',
+    title: 'Specialisation',
+    description: 'Deep dive into one craft — frontend, infrastructure, or product thinking. You start saying no to things that distract from mastery.',
+  },
+  {
+    id: '3',
+    number: 'Stage 03',
+    title: 'Leadership',
+    description: 'You ship less code and grow more people. Reviews, RFCs, and 1:1s replace ticket queues. Your success is measured by your team\'s output.',
+  },
+  {
+    id: '4',
+    number: 'Stage 04',
+    title: 'Strategy',
+    description: 'Roadmaps, OKRs, and cross-functional influence. You connect engineering decisions to business outcomes. The "how" matters less than the "why".',
+  },
+  {
+    id: '5',
+    number: 'Stage 05',
+    title: 'Legacy',
+    description: 'You build the thing that outlasts you — a platform, a culture, a community. Your name appears in commit logs less, but your impact compounds.',
+  },
+];
+
+export default function Process() {
+  return <StickyCardStack items={steps} sectionLabel="Our process" />;
+}
+```
+
+#### Without scroll animation
+
+```tsx
+<StickyCardStack
+  items={steps}
+  sectionLabel="Our process"
+  scaleOnScroll={false}
+/>
+```
+
+#### Custom colours per card
+
+```tsx
+<StickyCardStack
+  items={[
+    { id: '1', number: '01', title: 'Ideate', description: '...', bgColor: '#0f172a', textColor: '#f8fafc' },
+    { id: '2', number: '02', title: 'Prototype', description: '...', bgColor: '#1e293b', textColor: '#f1f5f9' },
+    { id: '3', number: '03', title: 'Ship', description: '...', bgColor: '#334155', textColor: '#e2e8f0' },
+  ]}
+/>
+```
+
+### `<StickyCardStack />`
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `items` | `StickyCardStackItem[]` | *required* | Card data array |
+| `sectionLabel` | `string` | `'Our process'` | Label shown above the card stack |
+| `stickyTop` | `number` | `100` | CSS `top` value for the sticky positioned cards (px) |
+| `initialTopOffset` | `number` | `80` | Top offset for the first card (px) |
+| `peekOffset` | `number` | `20` | Additional top offset added per card (px) |
+| `cardMinHeight` | `number` | `320` | Minimum card height (px) |
+| `cardBorderRadius` | `number` | `24` | Card border radius (px) |
+| `cardPadding` | `string` | `'48px 40px'` | Card padding shorthand |
+| `cardMarginBottom` | `number` | `32` | Margin-bottom on each card (px) |
+| `cardShadow` | `string` | `'0 20px 60px rgba(0,0,0,0.06)'` | Card box-shadow value |
+| `scaleOnScroll` | `boolean` | `true` | Whether covered cards scale down on scroll |
+| `scaledScale` | `number` | `0.95` | Scale factor for covered cards |
+| `scaledOpacity` | `number` | `0.6` | Opacity for covered cards |
+
+#### `StickyCardStackItem` shape
+
+| Field | Type | Description |
+|---|---|---|
+| `id` | `string` | Unique identifier |
+| `number` | `string` | Step label (e.g. `'Step 01'`) |
+| `title` | `string` | Card heading |
+| `description` | `string` | Card body text |
+| `bgColor` | `string?` | Background colour override |
+| `textColor` | `string?` | Text colour override |
 
 ## Adding a New Effect
 

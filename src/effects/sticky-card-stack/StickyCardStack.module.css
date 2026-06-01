@@ -1,0 +1,67 @@
+.section {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 0 24px 200px;
+}
+
+.label {
+  text-align: center;
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--rce-scs-muted, #6b6b73);
+  margin-bottom: 32px;
+  padding-top: 20px;
+}
+
+.stack {
+  position: relative;
+}
+
+.card {
+  position: sticky;
+  margin-bottom: var(--rce-scs-card-margin, 32px);
+  border-radius: var(--rce-scs-card-radius, 24px);
+  padding: var(--rce-scs-card-padding, 48px 40px);
+  min-height: var(--rce-scs-card-min-height, 320px);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  box-shadow: var(--rce-scs-card-shadow, 0 20px 60px rgba(0, 0, 0, 0.06));
+}
+
+.card--last {
+  border: 1px solid var(--rce-scs-border, #e0ddd8);
+}
+
+.cardNum {
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  opacity: 0.5;
+  margin-bottom: 16px;
+  font-weight: 400;
+}
+
+.cardTitle {
+  font-size: clamp(24px, 4vw, 36px);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  margin-bottom: 12px;
+  line-height: 1.15;
+}
+
+.cardDesc {
+  font-size: 16px;
+  opacity: 0.7;
+  line-height: 1.6;
+  max-width: 50ch;
+}
+
+@media (max-width: 768px) {
+  .card {
+    padding: 32px 24px;
+    min-height: 260px;
+  }
+}

@@ -10,6 +10,7 @@ export default defineConfig({
     'effects/circular-text': 'src/effects/circular-text/index.ts',
     'effects/color-shift': 'src/effects/color-shift/index.ts',
     'effects/type-writer': 'src/effects/type-writer/index.ts',
+    'effects/sticky-card-stack': 'src/effects/sticky-card-stack/index.ts',
     core: 'src/core/index.ts',
   },
   format: ['esm', 'cjs'],

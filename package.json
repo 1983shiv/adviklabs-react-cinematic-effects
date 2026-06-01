@@ -87,6 +87,16 @@
         "default": "./dist/effects/type-writer.cjs"
       }
     },
+    "./effects/sticky-card-stack": {
+      "import": {
+        "types": "./dist/effects/sticky-card-stack.d.ts",
+        "default": "./dist/effects/sticky-card-stack.js"
+      },
+      "require": {
+        "types": "./dist/effects/sticky-card-stack.d.cts",
+        "default": "./dist/effects/sticky-card-stack.cjs"
+      }
+    },
     "./styles.css": "./dist/index.css"
   },
   "files": [

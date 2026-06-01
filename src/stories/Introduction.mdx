@@ -17,13 +17,14 @@ effect in the library. Use it to:
 
 ## Available Effects
 
-- **AccordionSlider** | Horizontal / vertical image panels that expand on hover or click
-- **ImageTrail**      | Cursor-following image tiles that spawn and fade as you move
-- **StickyStack**     | Scroll-driven feature showcase with a sticky paired visual
-- **FlipCards**       | Responsive 3D cards that flip to reveal more info on hover or click
-- **CircularText**    | Text rendered along a rotating SVG arc — spin, scroll-reactive, or static
-- **ColorShift**      | Scroll-driven background and text colour transitions between page sections
-- **TypeWriter**      | Phrase cycler, viewport-triggered code block, and staggered chat bubble sequence
+- **AccordionSlider**   | Horizontal / vertical image panels that expand on hover or click
+- **ImageTrail**        | Cursor-following image tiles that spawn and fade as you move
+- **StickyStack**       | Scroll-driven feature showcase with a sticky paired visual
+- **FlipCards**         | Responsive 3D cards that flip to reveal more info on hover or click
+- **CircularText**      | Text rendered along a rotating SVG arc — spin, scroll-reactive, or static
+- **ColorShift**        | Scroll-driven background and text colour transitions between page sections
+- **TypeWriter**        | Phrase cycler, viewport-triggered code block, and staggered chat bubble sequence
+- **StickyCardStack**   | Cards stack on top of each other as you scroll — like dealing cards onto a table
 
 ---
 
@@ -92,6 +93,19 @@ export default function Page() {
       ]}
     />
   );
+}
+```
+
+```tsx
+import { StickyCardStack } from 'react-cinematic-effects';
+
+export default function Process() {
+  const steps = [
+    { id: '1', number: 'Step 01', title: 'Discovery', description: 'We understand your customers, constraints, and the real opportunity.' },
+    { id: '2', number: 'Step 02', title: 'Architecture', description: 'Information architecture, user flows, and wireframes.' },
+    { id: '3', number: 'Step 03', title: 'Visual design', description: 'Moodboards, type pairings, and a component library built to scale.' },
+  ];
+  return <StickyCardStack items={steps} sectionLabel="Our process" />;
 }
 ```
 
