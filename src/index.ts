@@ -41,6 +41,9 @@ export type { TypeWriterProps, TypeWriterVariant, ChatMessage } from './effects/
 export { StickyCardStack } from './effects/sticky-card-stack';
 export type { StickyCardStackProps, StickyCardStackItem } from './effects/sticky-card-stack';
 
+export { Coverflow } from './effects/coverflow';
+export type { CoverflowProps, CoverflowItem } from './effects/coverflow';
+
 // ── Core (advanced users / contributors) ─────────
 export { useReducedMotion } from './core/hooks/useReducedMotion';
 export { useIsClient } from './core/hooks/useIsClient';

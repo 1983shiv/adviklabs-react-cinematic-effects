@@ -1,0 +1,123 @@
+/* ─────────────────────────────────────────────────
+   Coverflow — CSS Module
+   Prefix: rce-c (react-cinematic-effects / coverflow)
+   ───────────────────────────────────────────────── */
+
+/* ── Stage ─────────────────────────────────────── */
+
+.root {
+  perspective: var(--rce-c-perspective, 1200px);
+  overflow: hidden;
+  width: 100%;
+}
+
+.track {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: var(--rce-c-track-height, 400px);
+  position: relative;
+  transform-style: preserve-3d;
+}
+
+/* ── Card ──────────────────────────────────────── */
+
+.item {
+  position: absolute;
+  width: var(--rce-c-item-width, 300px);
+  height: var(--rce-c-item-height, 360px);
+  border-radius: var(--rce-c-radius, 20px);
+  overflow: hidden;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 28px;
+  transition:
+    transform var(--rce-c-duration, 600ms) var(--rce-c-easing, cubic-bezier(0.16, 1, 0.3, 1)),
+    opacity var(--rce-c-duration, 600ms) var(--rce-c-easing, cubic-bezier(0.16, 1, 0.3, 1));
+  will-change: transform, opacity;
+}
+
+.itemHidden {
+  pointer-events: none;
+  visibility: hidden;
+}
+
+.itemTitle {
+  font-size: 20px;
+  font-weight: 600;
+  margin: 0 0 4px;
+}
+
+.itemDesc {
+  font-size: 13px;
+  opacity: 0.7;
+  margin: 0;
+}
+
+/* ── Navigation ────────────────────────────────── */
+
+.nav {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 32px;
+}
+
+.navButton {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid var(--rce-c-nav-border, #1e1e22);
+  background: transparent;
+  color: inherit;
+  font-size: 18px;
+  line-height: 1;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition:
+    transform var(--rce-c-duration, 600ms) var(--rce-c-easing, cubic-bezier(0.16, 1, 0.3, 1)),
+    opacity 200ms ease;
+}
+
+.navButton:hover:not(:disabled) {
+  transform: scale(1.06);
+  opacity: 0.85;
+}
+
+.navButton:disabled {
+  opacity: 0.3;
+  cursor: default;
+}
+
+.navButton:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 2px;
+}
+
+/* ── Reduced-motion / static fallback ──────────── */
+
+.staticList {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+}
+
+.staticItem {
+  border-radius: var(--rce-c-radius, 20px);
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  min-height: 120px;
+  cursor: pointer;
+}
+
+.staticItemActive {
+  outline: 2px solid currentColor;
+  outline-offset: 2px;
+}

@@ -1,0 +1,15 @@
+new effect - coverflow
+
+3D carousel with active card front and centre, flanking cards tilted
+in perspective (ported from reference/coverflow.html). Click arrows
+or cards to navigate; controlled + uncontrolled active index.
+
+- src/effects/coverflow/: Coverflow.tsx, Coverflow.types.ts,
+  useCoverflow.ts, Coverflow.module.css, index.ts
+- register in src/index.ts, tsup.config.ts, package.json
+  (./effects/coverflow)
+- stories: src/stories/Coverflow.stories.tsx (Default, Dramatic
+  Tilt, Flat Spread, Without Navigation)
+- docs: Introduction.mdx + README.md (feature bullet, Quick Start,
+  <Coverflow /> props table)
+- build: npm run build passes (ESM + CJS + DTS)

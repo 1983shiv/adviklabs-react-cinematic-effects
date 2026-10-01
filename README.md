@@ -17,6 +17,7 @@
 - 🎨 **ColorShift** — Scroll-driven background and text colour transitions between page sections
 - ⌨️ **TypeWriter** — Three-variant typewriter effect: phrase cycler, viewport-triggered code block, and staggered chat bubble sequence
 - 🗂️ **StickyCardStack** — Cards stack on top of each other as you scroll, creating a physical sense of layers
+- 💿 **Coverflow** — 3D carousel with the active card front and centre, flanking cards tilted back in perspective
 - 🧩 **Extensible** — Add new effects by dropping a folder — no core changes needed
 - 📦 **Tree-shakable** — Import only the effects you use
 - 🎯 **TypeScript** — Full type definitions with IDE autocomplete
@@ -638,6 +639,73 @@ export default function Process() {
 />
 ```
 
+### Coverflow
+
+3D coverflow carousel — the active card sits front and centre while flanking cards tilt away in perspective. Click arrows or cards to navigate. Great for portfolios, testimonials, and product variants.
+
+```tsx
+import '@adviklabs/react-cinematic-effects/styles.css'; // required — add once at app entry
+import { Coverflow } from '@adviklabs/react-cinematic-effects';
+
+const items = [
+  {
+    id: '1',
+    title: 'Brand Identity',
+    description: 'Logo, type, colour system',
+    background: 'linear-gradient(135deg,#2a1a10,#1a0d08)',
+  },
+  {
+    id: '2',
+    title: 'Website',
+    description: 'Responsive, animated, fast',
+    background: 'linear-gradient(135deg,#1a2a1e,#0d1a10)',
+  },
+  {
+    id: '3',
+    title: 'Mobile App',
+    description: 'iOS and Android native',
+    background: 'linear-gradient(135deg,#1a1a2e,#0a0a1a)',
+  },
+];
+
+export default function Showcase() {
+  return (
+    <Coverflow
+      items={items}
+      offsetX={220}
+      tiltAngle={40}
+      sideScale={0.8}
+      maxVisible={2}
+    />
+  );
+}
+```
+
+#### Dramatic tilt variant
+
+```tsx
+<Coverflow
+  items={items}
+  offsetX={180}
+  tiltAngle={60}
+  sideScale={0.7}
+  maxVisible={3}
+/>
+```
+
+#### Controlled active card
+
+```tsx
+const [active, setActive] = useState(1);
+
+<Coverflow
+  items={items}
+  activeIndex={active}
+  onActiveChange={setActive}
+  showNavigation={false}
+/>
+```
+
 ### `<StickyCardStack />`
 
 | Prop | Type | Default | Description |
@@ -666,6 +734,41 @@ export default function Process() {
 | `description` | `string` | Card body text |
 | `bgColor` | `string?` | Background colour override |
 | `textColor` | `string?` | Text colour override |
+
+### `<Coverflow />`
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `items` | `CoverflowItem[]` | *required* | Card data array |
+| `defaultActiveIndex` | `number` | middle item | Initially active card (uncontrolled) |
+| `activeIndex` | `number` | — | Controlled active card index |
+| `onActiveChange` | `(index: number) => void` | — | Fires when the active card changes |
+| `itemWidth` | `number` | `300` | Card width (px) |
+| `itemHeight` | `number` | `360` | Card height (px) |
+| `offsetX` | `number` | `220` | Horizontal offset per step from centre (px) |
+| `tiltAngle` | `number` | `40` | Y-axis tilt applied to side cards (degrees) |
+| `sideScale` | `number` | `0.8` | Scale applied to non-active cards |
+| `maxVisible` | `number` | `2` | Cards visible on each side of the active card |
+| `fadeStep` | `number` | `0.2` | Opacity falloff per step from centre (0–1) |
+| `dimBrightness` | `number` | `0.6` | Brightness applied to non-active cards (0–1) |
+| `perspective` | `number` | `1200` | 3D perspective depth (px) |
+| `borderRadius` | `number` | `20` | Card border radius (px) |
+| `trackHeight` | `string` | `'400px'` | Track (stage) height CSS value |
+| `transitionDuration` | `number` | `600` | Transition duration (ms) |
+| `transitionEasing` | `string` | `'cubic-bezier(0.16, 1, 0.3, 1)'` | CSS easing |
+| `showNavigation` | `boolean` | `true` | Show prev/next buttons |
+| `prevLabel` | `string` | `'Previous card'` | Accessible label for the previous button |
+| `nextLabel` | `string` | `'Next card'` | Accessible label for the next button |
+| `renderItem` | `(item, index, isActive) => ReactNode` | — | Custom card renderer |
+
+#### `CoverflowItem` shape
+
+| Field | Type | Description |
+|---|---|---|
+| `id` | `string` | Unique identifier |
+| `title` | `string` | Card heading |
+| `description` | `string?` | Card body text |
+| `background` | `string?` | CSS background (colour, gradient, or image) |
 
 ## Adding a New Effect
 

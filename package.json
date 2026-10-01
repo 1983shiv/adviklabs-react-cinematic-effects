@@ -97,6 +97,16 @@
         "default": "./dist/effects/sticky-card-stack.cjs"
       }
     },
+    "./effects/coverflow": {
+      "import": {
+        "types": "./dist/effects/coverflow.d.ts",
+        "default": "./dist/effects/coverflow.js"
+      },
+      "require": {
+        "types": "./dist/effects/coverflow.d.cts",
+        "default": "./dist/effects/coverflow.cjs"
+      }
+    },
     "./styles.css": "./dist/index.css"
   },
   "files": [

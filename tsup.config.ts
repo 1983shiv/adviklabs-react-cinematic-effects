@@ -11,6 +11,7 @@ export default defineConfig({
     'effects/color-shift': 'src/effects/color-shift/index.ts',
     'effects/type-writer': 'src/effects/type-writer/index.ts',
     'effects/sticky-card-stack': 'src/effects/sticky-card-stack/index.ts',
+    'effects/coverflow': 'src/effects/coverflow/index.ts',
     core: 'src/core/index.ts',
   },
   format: ['esm', 'cjs'],
