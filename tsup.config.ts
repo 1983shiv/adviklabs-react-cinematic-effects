@@ -12,6 +12,7 @@ export default defineConfig({
     'effects/type-writer': 'src/effects/type-writer/index.ts',
     'effects/sticky-card-stack': 'src/effects/sticky-card-stack/index.ts',
     'effects/coverflow': 'src/effects/coverflow/index.ts',
+    'effects/glitch-effect': 'src/effects/glitch-effect/index.ts',
     core: 'src/core/index.ts',
   },
   format: ['esm', 'cjs'],

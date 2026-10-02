@@ -18,6 +18,7 @@
 - ⌨️ **TypeWriter** — Three-variant typewriter effect: phrase cycler, viewport-triggered code block, and staggered chat bubble sequence
 - 🗂️ **StickyCardStack** — Cards stack on top of each other as you scroll, creating a physical sense of layers
 - 💿 **Coverflow** — 3D carousel with the active card front and centre, flanking cards tilted back in perspective
+- 📺 **GlitchEffect** — RGB channel-split headline with hover bursts plus optional scanline info cards
 - 🧩 **Extensible** — Add new effects by dropping a folder — no core changes needed
 - 📦 **Tree-shakable** — Import only the effects you use
 - 🎯 **TypeScript** — Full type definitions with IDE autocomplete
@@ -769,6 +770,69 @@ const [active, setActive] = useState(1);
 | `title` | `string` | Card heading |
 | `description` | `string?` | Card body text |
 | `background` | `string?` | CSS background (colour, gradient, or image) |
+
+### GlitchEffect
+
+RGB channel split on hover — digital distortion for gaming, music, and tech-forward brands. The headline's cyan/red copies slice apart in controlled hover bursts (restraint is the point — not constant noise), with optional info cards that jitter + show CRT scanlines on hover. Pure CSS, zero JavaScript animation.
+
+```tsx
+import '@adviklabs/react-cinematic-effects/styles.css'; // required — add once at app entry
+import { GlitchEffect } from '@adviklabs/react-cinematic-effects';
+
+export default function Hero() {
+  return (
+    <GlitchEffect
+      text="GLITCH"
+      items={[
+        { id: '1', title: 'Cyberpunk aesthetic', description: 'RGB channel splitting with clip-path.' },
+        { id: '2', title: 'Hover-triggered', description: 'Controlled bursts create drama.' },
+      ]}
+    />
+  );
+}
+```
+
+#### Always-on loop variant
+
+```tsx
+<GlitchEffect
+  text="SIGNAL"
+  trigger="always"
+  cyanColor="#22ff88"
+  redColor="#ff2fb3"
+  glitchDuration={600}
+/>
+```
+
+### `<GlitchEffect />`
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `text` | `string` | *required* | Headline text that glitches |
+| `trigger` | `'hover' \| 'always'` | `'hover'` | Fire glitch on hover/focus bursts or loop continuously |
+| `fontSize` | `string` | `'clamp(60px,12vw,160px)'` | Headline font size CSS value |
+| `fontWeight` | `number` | `800` | Headline font weight |
+| `letterSpacing` | `string` | `'-0.04em'` | Headline letter-spacing CSS value |
+| `textColor` | `string` | `'currentColor'` | Headline text colour |
+| `cyanColor` | `string` | `'#00f0ff'` | Top RGB-split layer colour |
+| `redColor` | `string` | `'#ff3b3b'` | Bottom RGB-split layer colour |
+| `mutedColor` | `string` | `'#5a5a5e'` | Card description colour |
+| `cardBackground` | `string` | `'transparent'` | Card background colour |
+| `cardBorderColor` | `string` | `'#1e1e22'` | Card border colour (turns to `redColor` on hover) |
+| `cardBorderRadius` | `number` | `14` | Card border radius (px) |
+| `glitchDuration` | `number` | `400` | One RGB-split glitch loop duration (ms) |
+| `textGlitchDuration` | `number` | `150` | Card-title text jitter duration (ms) |
+| `items` | `GlitchEffectItem[]` | — | Optional cards rendered below the headline |
+| `showScanlines` | `boolean` | `true` | Show CRT scanline overlay on card hover |
+| `ariaLabel` | `string` | same as `text` | Accessible label for the headline |
+
+#### `GlitchEffectItem` shape
+
+| Field | Type | Description |
+|---|---|---|
+| `id` | `string` | Unique identifier |
+| `title` | `string` | Card heading |
+| `description` | `string?` | Card body text |
 
 ## Adding a New Effect
 

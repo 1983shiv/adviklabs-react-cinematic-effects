@@ -26,6 +26,7 @@ effect in the library. Use it to:
 - **TypeWriter**        | Phrase cycler, viewport-triggered code block, and staggered chat bubble sequence
 - **StickyCardStack**   | Cards stack on top of each other as you scroll — like dealing cards onto a table
 - **Coverflow**         | 3D carousel with the active card front and centre, flanking cards tilted in perspective
+- **GlitchEffect**      | RGB channel-split headline with hover bursts plus optional scanline info cards
 
 ---
 
@@ -120,6 +121,22 @@ export default function Showcase() {
         { id: '1', title: 'Brand Identity', description: 'Logo, type, colour system' },
         { id: '2', title: 'Website', description: 'Responsive, animated, fast' },
         { id: '3', title: 'Mobile App', description: 'iOS and Android native' },
+      ]}
+    />
+  );
+}
+```
+
+```tsx
+import { GlitchEffect } from 'react-cinematic-effects';
+
+export default function Hero() {
+  return (
+    <GlitchEffect
+      text="GLITCH"
+      items={[
+        { id: '1', title: 'Hover-triggered', description: 'Controlled bursts create drama.' },
+        { id: '2', title: 'Zero JavaScript', description: 'Pure CSS keyframes, GPU-accelerated.' },
       ]}
     />
   );

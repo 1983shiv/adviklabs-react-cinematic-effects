@@ -44,6 +44,9 @@ export type { StickyCardStackProps, StickyCardStackItem } from './effects/sticky
 export { Coverflow } from './effects/coverflow';
 export type { CoverflowProps, CoverflowItem } from './effects/coverflow';
 
+export { GlitchEffect } from './effects/glitch-effect';
+export type { GlitchEffectProps, GlitchEffectItem } from './effects/glitch-effect';
+
 // ── Core (advanced users / contributors) ─────────
 export { useReducedMotion } from './core/hooks/useReducedMotion';
 export { useIsClient } from './core/hooks/useIsClient';

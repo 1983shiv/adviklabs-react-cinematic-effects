@@ -107,6 +107,16 @@
         "default": "./dist/effects/coverflow.cjs"
       }
     },
+    "./effects/glitch-effect": {
+      "import": {
+        "types": "./dist/effects/glitch-effect.d.ts",
+        "default": "./dist/effects/glitch-effect.js"
+      },
+      "require": {
+        "types": "./dist/effects/glitch-effect.d.cts",
+        "default": "./dist/effects/glitch-effect.cjs"
+      }
+    },
     "./styles.css": "./dist/index.css"
   },
   "files": [

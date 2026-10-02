@@ -1,15 +1,15 @@
-new effect - coverflow
+new effect - glitch-effect
 
-3D carousel with active card front and centre, flanking cards tilted
-in perspective (ported from reference/coverflow.html). Click arrows
-or cards to navigate; controlled + uncontrolled active index.
+RGB channel-split headline with hover bursts plus optional scanline
+info cards (ported from reference/glitch-effect.html). Pure CSS
+clip-path + translate keyframes, zero runtime JS animation.
 
-- src/effects/coverflow/: Coverflow.tsx, Coverflow.types.ts,
-  useCoverflow.ts, Coverflow.module.css, index.ts
+- src/effects/glitch-effect/: GlitchEffect.tsx, GlitchEffect.types.ts,
+  GlitchEffect.module.css, index.ts
 - register in src/index.ts, tsup.config.ts, package.json
-  (./effects/coverflow)
-- stories: src/stories/Coverflow.stories.tsx (Default, Dramatic
-  Tilt, Flat Spread, Without Navigation)
+  (./effects/glitch-effect)
+- stories: src/stories/GlitchEffect.stories.tsx (Default, With Info
+  Cards, Always On, Custom Channels)
 - docs: Introduction.mdx + README.md (feature bullet, Quick Start,
-  <Coverflow /> props table)
+  <GlitchEffect /> props table)
 - build: npm run build passes (ESM + CJS + DTS)
